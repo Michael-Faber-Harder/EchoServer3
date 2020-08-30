@@ -40,12 +40,15 @@ namespace EchoServer
 			StreamReader sr = new StreamReader(ns);
 			StreamWriter sw = new StreamWriter(ns);
 			String line = sr.ReadLine();
+			Console.WriteLine($"Modtager fra Client: {line}");
 			//if (line.ToLower() == "close")
 			//{
 			//	return false;
 			//}
 			Thread.Sleep(3000);
-			sw.WriteLine(CountWords(line));
+			int returTilClient = CountWords(line);
+			Console.WriteLine($"sender til Client: {line}");
+			sw.WriteLine(returTilClient);
 			sw.Flush();
 			//return true;
 		}
